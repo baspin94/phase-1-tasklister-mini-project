@@ -8,16 +8,21 @@ document.addEventListener("DOMContentLoaded", () => {
   function buildToDo() {
     //Grab Input
     let task = document.querySelector("#new-task-description").value;
-    console.log(task);
     
     //Create New ToDo Element
     let newToDo = document.createElement("p");
-    newToDo.textContent = task;
-    console.log(newToDo);
+    newToDo.textContent = `${task}  `;
+
+    //Add Delete Button
+    let delBtn = document.createElement("button");
+    delBtn.textContent = "X";
+    newToDo.appendChild(delBtn);
+
+    //Add Event Listener
+    delBtn.addEventListener('click', (event) => deleteItem(event));
 
     //Grab List
     const toDoList = document.querySelector("#list");
-    console.log(toDoList);
 
     //Append Element to List
     toDoList.appendChild(newToDo);
@@ -26,5 +31,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const taskForm = document.querySelector("#create-task-form");
     taskForm.reset();
   }
+
+  function deleteItem(event) {
+    //do things
+    //take in event parameter
+    //kill the target's parent
+    event.target.parentNode.remove();
+  }
+
+
 });
   
