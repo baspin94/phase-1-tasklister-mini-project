@@ -5,13 +5,28 @@ document.addEventListener("DOMContentLoaded", () => {
     //Callback function
     buildToDo();
   })
+  
   function buildToDo() {
-    //Grab Input
+    //Grab Description
     let task = document.querySelector("#new-task-description").value;
-    
+
+    //Grab Priority
+    let priority = document.querySelector('#priority-dropdown').value;
+
     //Create New ToDo Element
     let newToDo = document.createElement("p");
-    newToDo.textContent = `${task}  `;
+    newToDo.textContent = `${task}. `;
+    switch (priority) {
+      case '1':
+        newToDo.style.color = 'green';
+        break;
+      case '2':
+        newToDo.style.color = 'yellow';
+        break;
+      case '3':
+        newToDo.style.color = 'red';
+        break;
+    }
 
     //Add Delete Button
     let delBtn = document.createElement("button");
